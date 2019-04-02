@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 class App extends Component {
-  async getTimesheets() {
+  async getCustomers() {
     let apiUrl = "";
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     if (process.env.NODE_ENV === "development") {
@@ -16,12 +16,12 @@ class App extends Component {
       "X-AUTH-TOKEN": "api_kitten"
     };
     try {
-      const response = await axios.get(apiUrl + "timesheets", {
+      const response = await axios.get(apiUrl + "customers", {
         headers: headers
       });
-      const times = await response;
-      console.log(times);
-      return times;
+      const customer = await response;
+      console.log(customer);
+      return customer;
     } catch (error) {
       console.error(error);
     }
@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <>
         <p>hello</p>
-        <button onClick={() => this.getTimesheets()}>ping</button>
+        <button onClick={() => this.getCustomers()}>customers</button>
       </>
     );
   }
